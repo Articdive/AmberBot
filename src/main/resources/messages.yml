@@ -20,7 +20,7 @@ discord:
       header: 'Online Players'
       subheader: 'There are currently {onlineplayers}/{maxplayers} online'
       list:
-        - 'Players: {players}' # The | acts as a seperator giving it an extra Title itselt, this requires alot of testing.
+        - 'Players| {players}' # The | acts as a seperator giving it an extra Title itselt, this requires alot of testing.
       noplayers: 'There are no players online...'
     tps: ':clock12: Current TPS: {tps}'
 

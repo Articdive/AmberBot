@@ -5,6 +5,7 @@ import de.articdive.amberbot.channels.ChannelHandler;
 import de.articdive.amberbot.configs.Config;
 import de.articdive.amberbot.discordlisteners.CommandListener;
 import de.articdive.amberbot.discordlisteners.DiscordChatToMinecraftListener;
+import de.articdive.amberbot.discordlisteners.commands.ClearCommand;
 import de.articdive.amberbot.discordlisteners.commands.CommandHandler;
 import de.articdive.amberbot.discordlisteners.commands.ListCommand;
 import de.articdive.amberbot.discordlisteners.commands.PingCommand;
@@ -101,6 +102,7 @@ public final class AmberBot extends JavaPlugin {
 		commandHandler.cmds.put("ping", new PingCommand(this));
 		commandHandler.cmds.put("list", new ListCommand(this));
 		commandHandler.cmds.put("tps", new TPSCommand(this));
+		commandHandler.cmds.put("clear", new ClearCommand(this));
 
 	}
 

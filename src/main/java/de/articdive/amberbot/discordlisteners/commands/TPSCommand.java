@@ -55,7 +55,7 @@ public class TPSCommand implements Command {
 	public void executed(boolean success, MessageReceivedEvent event) { // If successful run this!
 		if (success) {
 			if (main.enableExtraLogging()) {
-				Bukkit.getLogger().info("Discord Command 'ping' was used");
+				Bukkit.getLogger().info("Discord Command 'tps' was used");
 			}
 		}
 	}
