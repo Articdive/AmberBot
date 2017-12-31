@@ -47,7 +47,7 @@ public class ListCommand implements Command {
 
 	@Override
 	public void action(String[] args, MessageReceivedEvent event) { //Actual Action
-		if (main.getServer().getOnlinePlayers().size() == 0){
+		if (main.getServer().getOnlinePlayers().size() == 0) {
 			event.getTextChannel().sendMessage(MessageHandler.message(main.getMessagesconfig().getFileConfig().getString("discord.commandmessages.list.noplayers"))).queue();
 			return;
 		}
@@ -55,7 +55,7 @@ public class ListCommand implements Command {
 		String subtitle = main.getMessagesconfig().getFileConfig().getString("discord.commandmessages.list.subheader").replace("{maxplayers}", Integer.toString(Bukkit.getMaxPlayers()))
 				.replace("{onlineplayers}", Integer.toString(Bukkit.getOnlinePlayers().size()));
 		List<String> listdescription = main.getMessagesconfig().getFileConfig().getStringList("discord.commandmessages.list.list");
-		event.getTextChannel().sendMessage(MessageHandler.listmessage(Bukkit.getOnlinePlayers(),title,subtitle,listdescription)).queue();
+		event.getTextChannel().sendMessage(MessageHandler.listmessage(Bukkit.getOnlinePlayers(), title, subtitle, listdescription)).queue();
 
 
 	}

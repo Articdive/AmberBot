@@ -24,15 +24,14 @@ import java.util.HashMap;
 
 public class CommandHandler {
 
-	private AmberBot main;
 	public CommandParser cmdparser;
+	public HashMap<String, Command> cmds = new HashMap<>();
+	private AmberBot main;
 
 	public CommandHandler(AmberBot main) {
 		this.main = main;
 		cmdparser = new CommandParser(main);
 	}
-
-	public HashMap<String, Command> cmds = new HashMap<>();
 
 	public void handleCommand(CommandParser.CommandContainer cmd) {
 

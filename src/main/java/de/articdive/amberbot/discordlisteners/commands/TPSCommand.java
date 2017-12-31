@@ -5,8 +5,6 @@ import de.articdive.amberbot.objects.TextChannelExtended;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.minecraft.server.v1_12_R1.MinecraftServer;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.spigotmc.TicksPerSecondCommand;
 
 /*
  *     AmberBot - Minecraft Disord Bot on Spigot Platform
@@ -66,15 +64,15 @@ public class TPSCommand implements Command {
 	}
 
 	private String getTPS() {
-		StringBuilder sb = new StringBuilder( "from last 1m, 5m, 15m: " );
-		for ( double tps : MinecraftServer.getServer().recentTps )
-		{
-			sb.append( format( tps ) );
-			sb.append( ", " );
+		StringBuilder sb = new StringBuilder("from last 1m, 5m, 15m: ");
+		for (double tps : MinecraftServer.getServer().recentTps) {
+			sb.append(format(tps));
+			sb.append(", ");
 		}
-		return  sb.substring( 0, sb.length() - 2 );
+		return sb.substring(0, sb.length() - 2);
 	}
+
 	private String format(double tps) {
-		return (tps > 20.0D ? "*" : "") + Math.min((double)Math.round(tps * 100.0D) / 100.0D, 20.0D);
+		return (tps > 20.0D ? "*" : "") + Math.min((double) Math.round(tps * 100.0D) / 100.0D, 20.0D);
 	}
 }

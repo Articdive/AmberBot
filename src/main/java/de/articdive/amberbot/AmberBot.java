@@ -1,4 +1,3 @@
-
 package de.articdive.amberbot;
 
 import de.articdive.amberbot.channels.ChannelHandler;
@@ -51,10 +50,10 @@ import javax.security.auth.login.LoginException;
 
 public final class AmberBot extends JavaPlugin {
 	private static Plugin plugin;
+	private static String commandprefix;
 	private Config messagesconfig;
 	private Config channelsconfig;
 	private JDA jda;
-	private static String commandprefix;
 	private ChannelHandler channelHandler;
 	private CommandHandler commandHandler;
 	private boolean extraLogging;
