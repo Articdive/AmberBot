@@ -56,8 +56,8 @@
 
     <repositories>
         <repository>
-            <id>spigot-repo</id>
-            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+            <id>spigotmc-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
         </repository>
         <repository>
             <id>sonatype</id>
@@ -73,7 +73,7 @@
     <dependencies>
         <dependency>
             <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
+            <artifactId>spigot</artifactId>
             <version>1.12.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
@@ -85,14 +85,14 @@
         </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
-            <artifactId>spigot</artifactId>
+            <artifactId>spigot-api</artifactId>
             <version>1.12.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>3.4.0_320</version>
+            <version>3.4.0_319</version>
         </dependency>
         <!-- SLF4J is a real dickhead. -->
         <dependency>
