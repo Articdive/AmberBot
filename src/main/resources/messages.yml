@@ -1,0 +1,30 @@
+# Something to note is: Using the {playerhead} causes Bold, Italics , Strikethrough and underline not to work (since it is Embedded),
+# If you want more information please visit our GitHub.
+
+discord:
+  eventformats:
+    startserver: ':white_check_mark: Server started!'
+    stopserver: ':x: Server stopped!'
+    kickplayer: ':mans_shoe: **{player}** has been kicked for **{reason}**.'
+    banplayer: ':hammer: **{player}** has been banned for **{reason}**.'
+    playerjoin: '{playerhead} {player} has joined the game!'
+    playerleave: '{playerhead} {player} has left the game!'
+    advancement: ':medal: {player} has just earned the advancement: **{advancement}**!'
+    playerchat: '{playerhead} {player} >> {message}'
+    playerdeath: ':skull_crossbones: **{message}.**'
+    playercommand: '{playerhead} {player} >|> {command}.'
+    consolecommand: ':regional_indicator_c: **CONSOLE** >|> {command}.'
+  commandmessages: # Messages that appear from the Discord Commands i.e !list or !status
+    ping: 'Pong!'
+    list:
+      header: 'Online Players'
+      subheader: 'There are currently {onlineplayers}/{maxplayers} online'
+      list:
+        - 'Players: {players}' # The | acts as a seperator giving it an extra Title itselt, this requires alot of testing.
+      noplayers: 'There are no players online...'
+    tps: ':clock12: Current TPS: {tps}'
+
+
+minecraft:
+  discordchattomc: '&f<&a[Discord]&2[{role}] &f{username}> &f{message}'
+  discordchattomcnorole: 'No-Role'

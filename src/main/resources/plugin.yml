@@ -1,0 +1,7 @@
+name: AmberBot
+version: ${project.version}
+main: de.articdive.amberbot.AmberBot
+prefix: AmberBot
+authors: [Articdive]
+description: Minecraft Discord Bot using JDA
+website: ci.articdive.cf

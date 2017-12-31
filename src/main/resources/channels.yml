@@ -1,0 +1,20 @@
+channels:
+  text:
+    general:
+      discordcommands: true # Should Discord Admins be able to do commands in MC via the bot i.e !stop or !status
+      discordchattomc: true # Should the Discord Chat be entered into Mineecraft chat?
+      eventmessages: # Messages that appear from Minecraft-Events i.e Server Starts, Player dies e.t.c
+        startserver: true # Server Starts.
+        stopserver: true # Server Stops.
+        kickplayer: true # Player is kicked.
+        banplayer: true # Player is banned.
+        playerjoin: true # Player Joins server (Login).
+        playerleave: true # Player leaves the server. (Logout)
+        advancement: true # Player gets Advancement (1.12+)or Achievment (1.11 and under).
+        playerchat: true # Player Speaks.
+        playerdeath: true # Player dies.
+        playercommand: true # Player runs Command.
+        consolecommand: true # Console runs Command.
+  voice:
+    general:
+      workinprogress: 'donotmesswiththisthanks <3'
