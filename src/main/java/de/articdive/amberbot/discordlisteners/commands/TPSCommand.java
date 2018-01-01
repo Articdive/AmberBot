@@ -1,6 +1,7 @@
 package de.articdive.amberbot.discordlisteners.commands;
 
 import de.articdive.amberbot.AmberBot;
+import de.articdive.amberbot.messaging.MessageHandler;
 import de.articdive.amberbot.objects.TextChannelExtended;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.minecraft.server.v1_12_R1.MinecraftServer;
@@ -45,7 +46,7 @@ public class TPSCommand implements Command {
 
 	@Override
 	public void action(String[] args, MessageReceivedEvent event) { //Actual Action
-		event.getTextChannel().sendMessage(main.getMessagesconfig().getFileConfig().getString("discord.commandmessages.tps").replace("{tps}", getTPS())).queue();
+		event.getTextChannel().sendMessage(MessageHandler.message(main.getMessagesconfig().getFileConfig().getString("discord.commandmessages.tps").replace("{tps}", getTPS()))).queue();
 
 	}
 
@@ -64,7 +65,7 @@ public class TPSCommand implements Command {
 	}
 
 	private String getTPS() {
-		StringBuilder sb = new StringBuilder("from last 1m, 5m, 15m: ");
+		StringBuilder sb = new StringBuilder();
 		for (double tps : MinecraftServer.getServer().recentTps) {
 			sb.append(format(tps));
 			sb.append(", ");

@@ -92,7 +92,7 @@
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>3.4.0_319</version>
+            <version>3.4.0_320</version>
         </dependency>
         <!-- SLF4J is a real dickhead. -->
         <dependency>

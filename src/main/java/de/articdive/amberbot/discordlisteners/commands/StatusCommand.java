@@ -1,3 +1,22 @@
+/*
+ *
+ *  *     {description line}
+ *  *     Copyright (C) 2018 Articdive (Lukas Mansour)
+ *  *     Contact: articdive@gmail.com
+ *  *
+ *  *     This program is free software: you can redistribute it and/or modify
+ *  *     it under the terms of the GNU General Public License as published by
+ *  *     the Free Software Foundation, either version 3 of the License, or
+ *  *     any later version.
+ *  *
+ *  *     You should have received a copy of the GNU General Public License,
+ *  *     along with this program.
+ *  *     This is available at Lisence.MD in the root file of this program.
+ *  *     If not, see <http://www.gnu.org/licenses/>.
+ *  *
+ *
+ */
+
 package de.articdive.amberbot.discordlisteners.commands;
 
 import de.articdive.amberbot.AmberBot;
@@ -5,6 +24,8 @@ import de.articdive.amberbot.messaging.MessageHandler;
 import de.articdive.amberbot.objects.TextChannelExtended;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.bukkit.Bukkit;
+
+import java.util.List;
 
 /*
  *     AmberBot - Minecraft Disord Bot on Spigot Platform
@@ -23,11 +44,11 @@ import org.bukkit.Bukkit;
  *
  */
 
-public class PingCommand implements Command {
+public class StatusCommand implements Command {
 
 	private AmberBot main;
 
-	public PingCommand(AmberBot main) {
+	public StatusCommand(AmberBot main) {
 		this.main = main;
 	}
 
@@ -45,7 +66,11 @@ public class PingCommand implements Command {
 
 	@Override
 	public void action(String[] args, MessageReceivedEvent event) { //Actual Action
-		event.getTextChannel().sendMessage(MessageHandler.message(main.getMessagesconfig().getFileConfig().getString("discord.commandmessages.ping"))).queue();
+		String title = main.getMessagesconfig().getFileConfig().getString("discord.commandmessages.status.header");
+		String subtitle = main.getMessagesconfig().getFileConfig().getString("discord.commandmessages.status.subheader").replace("{maxplayers}", Integer.toString(Bukkit.getMaxPlayers()))
+				.replace("{onlineplayers}", Integer.toString(Bukkit.getOnlinePlayers().size()));
+		List<String> listdescription = main.getMessagesconfig().getFileConfig().getStringList("discord.commandmessages.status.list");
+		event.getTextChannel().sendMessage(MessageHandler.statusmessage(title, subtitle, listdescription)).queue();
 
 	}
 
@@ -53,7 +78,7 @@ public class PingCommand implements Command {
 	public void executed(boolean success, MessageReceivedEvent event) { // If successful run this!
 		if (success) {
 			if (main.enableExtraLogging()) {
-				Bukkit.getLogger().info("Discord Command 'ping' was used");
+				Bukkit.getLogger().info("Discord Command 'status' was used");
 			}
 		}
 	}

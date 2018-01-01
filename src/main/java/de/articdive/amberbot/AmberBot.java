@@ -8,6 +8,7 @@ import de.articdive.amberbot.discordlisteners.commands.ClearCommand;
 import de.articdive.amberbot.discordlisteners.commands.CommandHandler;
 import de.articdive.amberbot.discordlisteners.commands.ListCommand;
 import de.articdive.amberbot.discordlisteners.commands.PingCommand;
+import de.articdive.amberbot.discordlisteners.commands.StatusCommand;
 import de.articdive.amberbot.discordlisteners.commands.TPSCommand;
 import de.articdive.amberbot.eventlisteners.AsyncPlayerChatEventListener;
 import de.articdive.amberbot.eventlisteners.CommandEventListeners;
@@ -102,6 +103,7 @@ public final class AmberBot extends JavaPlugin {
 		commandHandler.cmds.put("list", new ListCommand(this));
 		commandHandler.cmds.put("tps", new TPSCommand(this));
 		commandHandler.cmds.put("clear", new ClearCommand(this));
+		commandHandler.cmds.put("status", new StatusCommand(this));
 
 	}
 

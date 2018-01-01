@@ -20,9 +20,19 @@ discord:
       header: 'Online Players'
       subheader: 'There are currently {onlineplayers}/{maxplayers} online'
       list:
-        - 'Players| {players}' # The | acts as a seperator giving it an extra Title itselt, this requires alot of testing.
+        - 'Players| {players}' # The | acts as a seperator giving it an extra Title itself.
       noplayers: 'There are no players online...'
-    tps: ':clock12: Current TPS: {tps}'
+    tps: ':clock12: TPS from last 1m, 5m, 15m: {tps}'
+    status:
+      header: 'Server Status'
+      subheader: ':vibration_mode: **The server is online!**'
+      list:
+        - 'TPS| *from last 1m, 5m, 15m:* \n **{tps}**'
+        - 'Version| **{version}**'
+        - 'Maximum RAM| {maxram} **MB**'
+        - 'Used RAM| {usedram} **MB**'
+        - 'Free RAM| {freeram} **MB**'
+        - 'Entities| {entities} **Entities**'
 
 
 minecraft:
