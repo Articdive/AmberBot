@@ -1,6 +1,7 @@
 package de.articdive.amberbot;
 
 import de.articdive.amberbot.channels.ChannelHandler;
+import de.articdive.amberbot.commands.AmberBotCommandHandler;
 import de.articdive.amberbot.configs.Config;
 import de.articdive.amberbot.discordlisteners.CommandListener;
 import de.articdive.amberbot.discordlisteners.DiscordChatToMinecraftListener;
@@ -107,6 +108,8 @@ public final class AmberBot extends JavaPlugin {
 		commandHandler.cmds.put("status", new StatusCommand(this));
 		commandHandler.cmds.put("help", new HelpCommand(this));
 
+		getCommand("amberbot").setExecutor(new AmberBotCommandHandler(this));
+
 	}
 
 	@Override
@@ -121,6 +124,14 @@ public final class AmberBot extends JavaPlugin {
 			jda.shutdown();
 		}
 		plugin = null;
+	}
+
+	public void reload() {
+		this.reloadConfig();
+		this.saveConfig();
+		getMessagesconfig().initialize();
+		getChannelsconfig().initialize();
+		this.getLogger().info("Config Reloaded!");
 	}
 
 	private void registerConfigs(Config... config) {

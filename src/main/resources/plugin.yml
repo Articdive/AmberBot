@@ -5,3 +5,20 @@ prefix: AmberBot
 authors: [Articdive]
 description: Minecraft Discord Bot using JDA
 website: ci.articdive.cf
+commands:
+  amberbot:
+    description: Main command for AmberBot
+    aliases: [ab]
+    permission: amberbot.help
+permissions:
+  amberbot.*:
+    description: Gives Access to all AmberBot commands (In-Game)
+    children:
+      amberbot.help: true
+      amberbot.reload: true
+  amberbot.help:
+    description: Gives Access to the /Amberbot help menu
+    default: true
+  amberbot.reload:
+    desciprtion: Gives Access to the /Amberbot reload menu
+    default: op
