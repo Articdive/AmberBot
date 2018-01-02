@@ -33,6 +33,17 @@ discord:
         - 'Used RAM| {usedram} **MB**'
         - 'Free RAM| {freeram} **MB**'
         - 'Entities| {entities} **Entities**'
+    help:
+      header: 'Discord Help'
+      subheader: 'List of valid Commands'
+      list:
+        - '{cmdprefix}Help| **Shows this page**'
+        - '{cmdprefix}TPS| **Shows server''s TPS**'
+        - '{cmdprefix}Ping| **Returns Pong!**'
+        - '{cmdprefix}Status| **Shows server information**'
+        - '{cmdprefix}Clear (Number)| **Clears the last (Number) of messages**'
+        - '{cmdprefix}List| **Shows all the players on the minecraft server**'
+  nopermissions: '**Sorry, You don''t have permission to use this command!**'
 
 
 minecraft:

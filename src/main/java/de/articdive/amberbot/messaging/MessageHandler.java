@@ -1,9 +1,9 @@
 package de.articdive.amberbot.messaging;
 
+import de.articdive.amberbot.AmberBot;
 import net.dv8tion.jda.core.EmbedBuilder;
 import net.dv8tion.jda.core.MessageBuilder;
 import net.dv8tion.jda.core.entities.Message;
-import net.dv8tion.jda.core.entities.MessageEmbed;
 import net.minecraft.server.v1_12_R1.MinecraftServer;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.bukkit.Bukkit;
@@ -64,7 +64,8 @@ public class MessageHandler {
 		return builder.build();
 	}
 
-	public static MessageEmbed statusmessage(String title, String description, List<String> listformat) {
+	public static Message statusmessage(String title, String description, List<String> listformat) {
+		MessageBuilder builder = new MessageBuilder();
 		EmbedBuilder embedBuilder = new EmbedBuilder();
 		embedBuilder.setTitle(title);
 		embedBuilder.setDescription(description);
@@ -80,7 +81,23 @@ public class MessageHandler {
 								.replace("{usedram}", String.valueOf((Runtime.getRuntime().maxMemory() - Runtime.getRuntime().freeMemory()) / 1024L / 1024L))), true);
 			}
 		}
-		return embedBuilder.build();
+		builder.setEmbed(embedBuilder.build());
+		return builder.build();
+	}
+
+	public static Message helpmessage(String title, String description, List<String> listformat, String cmdprefix) {
+		MessageBuilder builder = new MessageBuilder();
+		EmbedBuilder embedBuilder = new EmbedBuilder();
+		embedBuilder.setTitle(title);
+		embedBuilder.setTitle(description);
+		for (String lineformat : listformat) {
+			if (lineformat.contains("|")) {
+				String[] split = lineformat.split("\\|");
+				embedBuilder.addField(split[0].replace("{cmdprefix}", cmdprefix), StringEscapeUtils.unescapeJava(split[1].replace("{cmdprefix}", cmdprefix)), true);
+			}
+		}
+		builder.setEmbed(embedBuilder.build());
+		return builder.build();
 	}
 
 	private static String getPlayerNames(Collection<? extends Player> players) {
@@ -110,5 +127,11 @@ public class MessageHandler {
 
 	private static String format(double tps) {
 		return (tps > 20.0D ? "*" : "") + Math.min((double) Math.round(tps * 100.0D) / 100.0D, 20.0D);
+	}
+
+	public static Message noPermissionsMessage(AmberBot main) {
+		MessageBuilder builder = new MessageBuilder();
+		builder.setContent(StringEscapeUtils.unescapeJava(main.getMessagesconfig().getFileConfig().getString("discord.nopermissions")));
+		return builder.build();
 	}
 }

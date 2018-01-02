@@ -4,6 +4,6 @@
 # To configure in which channels the bot should do stuff in look @ channels.yml
 # To setup this Bot please visit the Tutorial on our GitHub.
 Token: 'Insert Token For Dicord Bot Here :)'
-Game: 'MineCraft'
+Game: 'Minecraft'
 Command-Prefix: '~'
 log-discord-commands-to-mc-log: false # You can see which discord commands are run in the MC Console.

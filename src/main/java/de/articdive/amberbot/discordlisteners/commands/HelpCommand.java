@@ -7,6 +7,8 @@ import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.bukkit.Bukkit;
 
+import java.util.List;
+
 /*
  *     AmberBot - Minecraft Disord Bot on Spigot Platform
  *     Copyright (C) 2018 Articdive (Lukas Mansour)
@@ -24,11 +26,11 @@ import org.bukkit.Bukkit;
  *
  */
 
-public class PingCommand implements Command {
+public class HelpCommand implements Command {
 
 	private AmberBot main;
 
-	public PingCommand(AmberBot main) {
+	public HelpCommand(AmberBot main) {
 		this.main = main;
 	}
 
@@ -51,7 +53,10 @@ public class PingCommand implements Command {
 
 	@Override
 	public void action(String[] args, MessageReceivedEvent event) { //Actual Action
-		event.getTextChannel().sendMessage(MessageHandler.message(main.getMessagesconfig().getFileConfig().getString("discord.commandmessages.ping"))).queue();
+		String title = main.getMessagesconfig().getFileConfig().getString("discord.commandmessages.help.header");
+		String description = main.getMessagesconfig().getFileConfig().getString("discord.commandmessages.help.subheader");
+		List<String> listdescription = main.getMessagesconfig().getFileConfig().getStringList("discord.commandmessages.help.list");
+		event.getTextChannel().sendMessage(MessageHandler.helpmessage(title, description, listdescription, main.getCommandprefix())).queue();
 
 	}
 
@@ -59,7 +64,7 @@ public class PingCommand implements Command {
 	public void executed(boolean success, MessageReceivedEvent event) { // If successful run this!
 		if (success) {
 			if (main.enableExtraLogging()) {
-				Bukkit.getLogger().info("Discord Command 'ping' was used");
+				Bukkit.getLogger().info("Discord Command 'help' was used");
 			}
 		}
 	}

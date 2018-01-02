@@ -3,6 +3,7 @@ package de.articdive.amberbot.discordlisteners.commands;
 import de.articdive.amberbot.AmberBot;
 import de.articdive.amberbot.messaging.MessageHandler;
 import de.articdive.amberbot.objects.TextChannelExtended;
+import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.minecraft.server.v1_12_R1.MinecraftServer;
 import org.bukkit.Bukkit;
@@ -34,12 +35,17 @@ public class TPSCommand implements Command {
 
 	@Override
 	public boolean called(String[] args, MessageReceivedEvent event) { // Permissions e.t.c
-		for (TextChannelExtended channelExtended : main.getChannelHandler().getValidTextChannels()) {
-			if (channelExtended.getTextChannel().equals(event.getTextChannel())) {
-				if (channelExtended.areCommandsEnabled()) {
-					return true;
+		if (event.getMember().hasPermission(Permission.MESSAGE_WRITE)) {
+			for (TextChannelExtended channelExtended : main.getChannelHandler().getValidTextChannels()) {
+				if (channelExtended.getTextChannel().equals(event.getTextChannel())) {
+					if (channelExtended.areCommandsEnabled()) {
+						return true;
+					}
 				}
 			}
+		} else {
+			event.getTextChannel().sendMessage(MessageHandler.noPermissionsMessage(main)).queue();
+			return false;
 		}
 		return false;
 	}

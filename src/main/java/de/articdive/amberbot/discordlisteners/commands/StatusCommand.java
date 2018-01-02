@@ -1,27 +1,9 @@
-/*
- *
- *  *     {description line}
- *  *     Copyright (C) 2018 Articdive (Lukas Mansour)
- *  *     Contact: articdive@gmail.com
- *  *
- *  *     This program is free software: you can redistribute it and/or modify
- *  *     it under the terms of the GNU General Public License as published by
- *  *     the Free Software Foundation, either version 3 of the License, or
- *  *     any later version.
- *  *
- *  *     You should have received a copy of the GNU General Public License,
- *  *     along with this program.
- *  *     This is available at Lisence.MD in the root file of this program.
- *  *     If not, see <http://www.gnu.org/licenses/>.
- *  *
- *
- */
-
 package de.articdive.amberbot.discordlisteners.commands;
 
 import de.articdive.amberbot.AmberBot;
 import de.articdive.amberbot.messaging.MessageHandler;
 import de.articdive.amberbot.objects.TextChannelExtended;
+import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import org.bukkit.Bukkit;
 
@@ -54,12 +36,17 @@ public class StatusCommand implements Command {
 
 	@Override
 	public boolean called(String[] args, MessageReceivedEvent event) { // Permissions e.t.c
-		for (TextChannelExtended channelExtended : main.getChannelHandler().getValidTextChannels()) {
-			if (channelExtended.getTextChannel().equals(event.getTextChannel())) {
-				if (channelExtended.areCommandsEnabled()) {
-					return true;
+		if (event.getMember().hasPermission(Permission.MESSAGE_WRITE)) {
+			for (TextChannelExtended channelExtended : main.getChannelHandler().getValidTextChannels()) {
+				if (channelExtended.getTextChannel().equals(event.getTextChannel())) {
+					if (channelExtended.areCommandsEnabled()) {
+						return true;
+					}
 				}
 			}
+		} else {
+			event.getTextChannel().sendMessage(MessageHandler.noPermissionsMessage(main)).queue();
+			return false;
 		}
 		return false;
 	}
